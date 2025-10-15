@@ -20,7 +20,14 @@ A simple, in-memory ledger application implemented using Spring Boot (Java) to e
     Clone the repository:
    ```bash
    git clone https://github.com/Manjkumar/TinyLedger.git
+   ```
+   ```bash
    cd TinyLedger
+    ```
+   ```bash
+   cd TinyLedger
+   ```
+   ```bash
    mvn clean install
    mvn spring-boot:run
    # Or Execute the Jar file
@@ -44,7 +51,8 @@ Use a tool like cURL to test the endpoints.
 curl -X POST http://localhost:8080/api/ledger/deposit \
 -H "Content-Type: application/json" \
 -d '{"amount": "500.00", "description": "Initial funding"}'
-
+```
+```bash
 #Expected Response
 {
 "id": "1",
@@ -63,7 +71,8 @@ curl -X POST http://localhost:8080/api/ledger/deposit \
 curl -X POST http://localhost:8080/api/ledger/withdrawal \
 -H "Content-Type: application/json" \
 -d '{"amount": "100.00", "description": "withdraw"}'
-
+```
+```bash
 #Expected Response
 {
 "id": "1",
@@ -78,7 +87,8 @@ curl -X POST http://localhost:8080/api/ledger/withdrawal \
 GET /api/ledger/balance
 ```bash
 curl http://localhost:8080/api/ledger/balance
-
+```
+```bash
 #Expected Response
 {
     "currentBalance": "400.00"
@@ -88,7 +98,8 @@ curl http://localhost:8080/api/ledger/balance
 GET /api/ledger/history
 ```bash
 curl http://localhost:8080/api/ledger/history
-
+```
+```bash
 #Expected Response
 [
     { /* Transaction 1 json details */ },
