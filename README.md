@@ -1,6 +1,6 @@
 # Tiny Ledger API
 
-A simple, in-memory ledger application implemented using Spring Boot (Java) to expose RESTful APIs for recording money movements, viewing the current balance, and retrieving transaction history.
+A simple, in-memory ledger application implemented using Spring Boot (Java) to expose RESTful APIs for recording deposits, withdrawals, viewing the current balance, and retrieving transaction history.
 
 ## ⚙️ Technical Details
 
