@@ -41,7 +41,7 @@ Use a tool like cURL to test the endpoints.
 
 **Base URL:** `http://localhost:8080/api/ledger`
 
-### 3. Record a Deposit
+3. Record a Deposit
 
 **Endpoint:** `POST /api/ledger/deposit`
 **Headers:** `Content-Type: application/json`
@@ -62,7 +62,7 @@ curl -X POST http://localhost:8080/api/ledger/deposit \
 "runningBalance": "500.00"
 }
 ```
-### 4. Record a Withdrawal
+4. Record a Withdrawal
 **Endpoint:** `POST /api/ledger/withdrawal`
 **Headers:** `Content-Type: application/json`
 ### Example: Withdraw 100.00
@@ -82,7 +82,7 @@ curl -X POST http://localhost:8080/api/ledger/withdrawal \
 "runningBalance": "400.00"
 }
 ```
-### 5. View balance
+5. View balance
 GET /api/ledger/balance
 ```bash
 curl http://localhost:8080/api/ledger/balance
@@ -93,7 +93,7 @@ curl http://localhost:8080/api/ledger/balance
     "currentBalance": "400.00"
 }
 ```
-### 6. View transaction history
+6. View transaction history
 GET /api/ledger/history
 ```bash
 curl http://localhost:8080/api/ledger/history
