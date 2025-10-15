@@ -19,7 +19,7 @@ A simple, in-memory ledger application implemented using Spring Boot (Java) to e
 1. **Run the Application:**
     Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Manjkumar/TinyLedger.git
    cd TinyLedger
    mvn clean install
    mvn spring-boot:run
