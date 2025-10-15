@@ -72,7 +72,7 @@ class LedgerServiceTest {
             ledgerService.recordMovement(TransactionType.DEPOSIT, "one hundred", "Bad input");
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            ledgerService.recordMovement(TransactionType.DEPOSIT, "-10.00", "Negative input"); // should be parsed as positive
+            ledgerService.recordMovement(TransactionType.DEPOSIT, "-10.00", "Negative input");
         });
     }
 }

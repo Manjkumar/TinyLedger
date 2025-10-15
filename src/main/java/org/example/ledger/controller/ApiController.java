@@ -1,5 +1,7 @@
 package org.example.ledger.controller;
 
+import jakarta.validation.Valid;
+import org.example.ledger.model.TransactionRequest;
 import org.example.ledger.model.Transaction;
 import org.example.ledger.model.TransactionType;
 import org.example.ledger.service.LedgerService;
@@ -20,27 +22,15 @@ public class ApiController {
     }
 
     @PostMapping("/deposit")
-    public ResponseEntity<?> deposit(@RequestBody Map<String, String> request) {
-        String amount = request.get("amount");
-        String description = request.getOrDefault("description", "Deposit");
-        try {
-            Transaction transaction = ledgerService.recordMovement(TransactionType.DEPOSIT, amount, description);
-            return new ResponseEntity<>(transaction, HttpStatus.CREATED);
-        } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>(Map.of("error", e.getMessage()), HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<Transaction> deposit(@RequestBody @Valid TransactionRequest request) {
+        Transaction transaction = ledgerService.recordMovement(TransactionType.DEPOSIT, request.getAmount(), request.getDescription());
+        return new ResponseEntity<>(transaction, HttpStatus.CREATED);
     }
 
     @PostMapping("/withdrawal")
-    public ResponseEntity<?> withdrawal(@RequestBody Map<String, String> request) {
-        String amount = request.get("amount");
-        String description = request.getOrDefault("description", "Withdrawal");
-        try {
-            Transaction transaction = ledgerService.recordMovement(TransactionType.WITHDRAWAL, amount, description);
-            return new ResponseEntity<>(transaction, HttpStatus.CREATED);
-        } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>(Map.of("error", e.getMessage()), HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<?> withdrawal(@RequestBody @Valid TransactionRequest request) {
+        Transaction transaction = ledgerService.recordMovement(TransactionType.WITHDRAWAL, request.getAmount(), request.getDescription());
+        return new ResponseEntity<>(transaction, HttpStatus.CREATED);
     }
 
     @GetMapping("/balance")

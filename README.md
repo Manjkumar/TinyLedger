@@ -7,7 +7,7 @@ A simple, in-memory ledger application implemented using Spring Boot (Java) to e
 * **Technology:** Java, Spring Boot, Maven (for dependency management)
 * **Data Storage:** In-memory `List` 
 * **Monetary Handling:** Uses `BigDecimal` for precision, accepts/returns amounts as **String**.
-* **Assumption:** The code implementation is primarily focused on the correctness with default thread safety mechanisms. For better scalability/performance, Granular/external locks can be added.  
+* **Assumption:** The code implementation is primarily focused on the correctness with default thread safety mechanism. For better scalability/performance, Granular/external locks can be added. Validation checks are added using Spring validation.
 ## ▶️ How to Run Locally
 
 ### Prerequisites
@@ -102,4 +102,15 @@ curl http://localhost:8080/api/ledger/history
     { /* Transaction n json details */ }
 ]
 
+```
+7. Error Handling in API
+    An Error json response is returned for validation errors, example
+```bash
+curl -X POST http://localhost:8080/api/ledger/deposit \
+-H "Content-Type: application/json" \
+-d '{"amount": null, "description": ""}'
+```
+```bash
+#Expected Response
+{"errors":["Description must be between 3 and 100 characters.","Amount is required and cannot be empty."]}
 ```

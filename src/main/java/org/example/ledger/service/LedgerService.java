@@ -31,6 +31,7 @@ public class LedgerService {
      * @throws IllegalArgumentException if the amount is invalid or insufficient funds for withdrawal.
      */
     public synchronized Transaction recordMovement(TransactionType type, String amountStr, String description) {
+
         BigDecimal amount;
         try {
             amount = new BigDecimal(amountStr)
