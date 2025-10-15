@@ -45,7 +45,7 @@ Use a tool like cURL to test the endpoints.
 
 **Endpoint:** `POST /api/ledger/deposit`
 **Headers:** `Content-Type: application/json`
-# Example: Deposit 500.00
+### Example: Deposit 500.00
 ```bash
 curl -X POST http://localhost:8080/api/ledger/deposit \
 -H "Content-Type: application/json" \
@@ -65,7 +65,7 @@ curl -X POST http://localhost:8080/api/ledger/deposit \
 ### 4. Record a Withdrawal
 **Endpoint:** `POST /api/ledger/withdrawal`
 **Headers:** `Content-Type: application/json`
-# Example: Withdraw 100.00
+### Example: Withdraw 100.00
 ```bash
 curl -X POST http://localhost:8080/api/ledger/withdrawal \
 -H "Content-Type: application/json" \
