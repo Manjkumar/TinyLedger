@@ -46,7 +46,7 @@ Example: Deposit 500.00
 ```bash
 curl -X POST http://localhost:8080/api/ledger/deposit \
 -H "Content-Type: application/json" \
--d '{"amount": "500.00", "description": "Initial funding"}'
+-d '{"amount": "500.00"}'
 ```
 ```bash
 #Expected Response
@@ -54,8 +54,7 @@ curl -X POST http://localhost:8080/api/ledger/deposit \
 "id": "1",
 "timestamp": "2025-10-15T12:00:00.123456",
 "type": "DEPOSIT",
-"amount": "500.00",
-"description": "Initial funding",
+"amount": "500.00"
 "runningBalance": "500.00"
 }
 ```
@@ -66,7 +65,7 @@ Example: Withdraw 100.00
 ```bash
 curl -X POST http://localhost:8080/api/ledger/withdrawal \
 -H "Content-Type: application/json" \
--d '{"amount": "100.00", "description": "withdraw"}'
+-d '{"amount": "100.00"}'
 ```
 ```bash
 #Expected Response
@@ -74,8 +73,7 @@ curl -X POST http://localhost:8080/api/ledger/withdrawal \
 "id": "1",
 "timestamp": "2025-10-15T12:00:00.123456",
 "type": "WITHDRAWAL",
-"amount": "100.00",
-"description": "withdraw",
+"amount": "100.00"
 "runningBalance": "400.00"
 }
 ```
@@ -108,9 +106,9 @@ curl http://localhost:8080/api/ledger/history
 ```bash
 curl -X POST http://localhost:8080/api/ledger/deposit \
 -H "Content-Type: application/json" \
--d '{"amount": null, "description": ""}'
+-d '{"amount": null}'
 ```
 ```bash
 #Expected Response
-{"errors":["Description must be between 3 and 100 characters.","Amount is required and cannot be empty."]}
+{"errors":["Amount is required and cannot be empty."]}
 ```

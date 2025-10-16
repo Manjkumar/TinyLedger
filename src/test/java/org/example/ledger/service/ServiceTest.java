@@ -24,17 +24,17 @@ class LedgerServiceTest {
 
     @Test
     void testDepositIncreasesBalance() {
-        ledgerService.recordMovement(TransactionType.DEPOSIT, "100.50", "Initial funding");
+        ledgerService.recordMovement(TransactionType.DEPOSIT, "100.50");
         assertEquals("100.50", ledgerService.getCurrentBalance());
     }
 
     @Test
     void testWithdrawalDecreasesBalance() {
         // Setup initial balance
-        ledgerService.recordMovement(TransactionType.DEPOSIT, "200.00", "Initial");
+        ledgerService.recordMovement(TransactionType.DEPOSIT, "200.00");
 
         // Perform withdrawal
-        ledgerService.recordMovement(TransactionType.WITHDRAWAL, "50.25", "Rent payment");
+        ledgerService.recordMovement(TransactionType.WITHDRAWAL, "50.25");
 
         // Assert new balance
         assertEquals("149.75", ledgerService.getCurrentBalance());
@@ -42,8 +42,8 @@ class LedgerServiceTest {
 
     @Test
     void testHistoryIsRecorded() {
-        Transaction t1 = ledgerService.recordMovement(TransactionType.DEPOSIT, "10.00", "Small deposit");
-        Transaction t2 = ledgerService.recordMovement(TransactionType.WITHDRAWAL, "5.00", "Small withdrawal");
+        Transaction t1 = ledgerService.recordMovement(TransactionType.DEPOSIT, "10.00");
+        Transaction t2 = ledgerService.recordMovement(TransactionType.WITHDRAWAL, "5.00");
 
         assertEquals(2, ledgerService.getTransactionHistory().size());
 
@@ -59,7 +59,7 @@ class LedgerServiceTest {
     void testWithdrawalWithInsufficientFundsThrowsException() {
         // Initial balance is 0.00
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            ledgerService.recordMovement(TransactionType.WITHDRAWAL, "1.00", "Too much");
+            ledgerService.recordMovement(TransactionType.WITHDRAWAL, "1.00");
         });
 
         assertTrue(exception.getMessage().contains("Insufficient funds"));
@@ -69,10 +69,10 @@ class LedgerServiceTest {
     @Test
     void testInvalidAmountFormatThrowsException() {
         assertThrows(IllegalArgumentException.class, () -> {
-            ledgerService.recordMovement(TransactionType.DEPOSIT, "one hundred", "Bad input");
+            ledgerService.recordMovement(TransactionType.DEPOSIT, "one hundred");
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            ledgerService.recordMovement(TransactionType.DEPOSIT, "-10.00", "Negative input");
+            ledgerService.recordMovement(TransactionType.DEPOSIT, "-10.00");
         });
     }
 }

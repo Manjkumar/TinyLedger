@@ -26,11 +26,10 @@ public class LedgerService {
      * Records a new money movement (deposit or withdrawal).
      * @param type The type of transaction.
      * @param amountStr The amount as a String (for precision).
-     * @param description A brief description.
      * @return The newly created Transaction.
      * @throws IllegalArgumentException if the amount is invalid or insufficient funds for withdrawal.
      */
-    public synchronized Transaction recordMovement(TransactionType type, String amountStr, String description) {
+    public synchronized Transaction recordMovement(TransactionType type, String amountStr) {
 
         BigDecimal amount;
         try {
@@ -49,7 +48,6 @@ public class LedgerService {
                 String.valueOf(nextId.getAndIncrement()),
                 type,
                 amount.toPlainString(),
-                description,
                 newBalance.setScale(SCALE, ROUNDING_MODE).toPlainString()
         );
 

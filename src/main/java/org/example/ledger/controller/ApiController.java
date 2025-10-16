@@ -23,13 +23,13 @@ public class ApiController {
 
     @PostMapping("/deposit")
     public ResponseEntity<Transaction> deposit(@RequestBody @Valid TransactionRequest request) {
-        Transaction transaction = ledgerService.recordMovement(TransactionType.DEPOSIT, request.getAmount(), request.getDescription());
+        Transaction transaction = ledgerService.recordMovement(TransactionType.DEPOSIT, request.getAmount());
         return new ResponseEntity<>(transaction, HttpStatus.CREATED);
     }
 
     @PostMapping("/withdrawal")
     public ResponseEntity<?> withdrawal(@RequestBody @Valid TransactionRequest request) {
-        Transaction transaction = ledgerService.recordMovement(TransactionType.WITHDRAWAL, request.getAmount(), request.getDescription());
+        Transaction transaction = ledgerService.recordMovement(TransactionType.WITHDRAWAL, request.getAmount());
         return new ResponseEntity<>(transaction, HttpStatus.CREATED);
     }
 
