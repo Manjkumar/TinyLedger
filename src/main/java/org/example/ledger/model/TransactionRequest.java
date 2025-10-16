@@ -1,6 +1,5 @@
 package org.example.ledger.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
 
 public class TransactionRequest {
